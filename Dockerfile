@@ -12,4 +12,4 @@ RUN mvn dependency:go-offline
 
 COPY src /app/src
 
-CMD ["watchexec", "-r", "-e", "java,pom.xml", "mvn clean spring-boot:run"]
+CMD ["sh", "-c", "mvn flyway:migrate && watchexec -r -e java,pom.xml 'mvn clean spring-boot:run'"]
